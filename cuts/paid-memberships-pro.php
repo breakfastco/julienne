@@ -4,7 +4,7 @@
  *
  * PMPro prints frontend CSS on every request. Checkout and the assigned
  * membership pages need it in the head (FOUC on those screens is visible).
- * Everywhere else, drop `pmpro_frontend*` unless a shortcode or block renders.
+ * Everywhere else, drop the frontend stylesheets unless a shortcode or block renders.
  *
  * @package Breakfast_Julienne
  */
@@ -16,7 +16,12 @@ return array(
 	'active'     => static function () {
 		return defined( 'PMPRO_VERSION' );
 	},
-	'styles'     => array( 'pmpro_frontend*' ),
+	'styles'     => array(
+		'pmpro_frontend_base',
+		'pmpro_frontend_base_rtl',
+		'pmpro_frontend_variation_1',
+		'pmpro_frontend_variation_high_contrast',
+	),
 	'shortcodes' => array(
 		'pmpro_account',
 		'pmpro_login',

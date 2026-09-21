@@ -34,14 +34,14 @@ class Breakfast_Julienne_Cut {
 	protected $active = true;
 
 	/**
-	 * Style handles. Trailing `*` is a prefix match against the queue.
+	 * Style handles to dequeue.
 	 *
 	 * @var array|callable
 	 */
 	protected $styles = array();
 
 	/**
-	 * Script handles. Trailing `*` is a prefix match against the queue.
+	 * Script handles to dequeue.
 	 *
 	 * @var array|callable
 	 */
@@ -164,7 +164,7 @@ class Breakfast_Julienne_Cut {
 	}
 
 	/**
-	 * Style handle patterns.
+	 * Style handles.
 	 *
 	 * @return string[]
 	 */
@@ -173,7 +173,7 @@ class Breakfast_Julienne_Cut {
 	}
 
 	/**
-	 * Script handle patterns.
+	 * Script handles.
 	 *
 	 * @return string[]
 	 */

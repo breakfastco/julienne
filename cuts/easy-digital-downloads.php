@@ -26,7 +26,8 @@ return array(
 	),
 	'scripts'    => array(
 		'edd-ajax',
-		'oceanwp-edd*',
+		'oceanwp-edd-ajax-cart',
+		'oceanwp-edd-display-cart',
 	),
 	'shortcodes' => array(
 		'download_checkout',

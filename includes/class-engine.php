@@ -168,12 +168,12 @@ class Breakfast_Julienne_Engine {
 	}
 
 	/**
-	 * @param string[] $handles Handle patterns.
+	 * @param string[] $handles Style or script handles.
 	 * @param string   $type    style|script.
 	 * @return void
 	 */
 	protected function dequeue_handles( $handles, $type ) {
-		foreach ( $this->expand_handles( $handles, $type ) as $handle ) {
+		foreach ( $handles as $handle ) {
 			if ( 'style' === $type ) {
 				wp_dequeue_style( $handle );
 			} else {
@@ -183,47 +183,17 @@ class Breakfast_Julienne_Engine {
 	}
 
 	/**
-	 * @param string[] $handles Handle patterns.
+	 * @param string[] $handles Style or script handles.
 	 * @param string   $type    style|script.
 	 * @return void
 	 */
 	protected function enqueue_handles( $handles, $type ) {
-		foreach ( $this->expand_handles( $handles, $type ) as $handle ) {
+		foreach ( $handles as $handle ) {
 			if ( 'style' === $type ) {
 				wp_enqueue_style( $handle );
 			} else {
 				wp_enqueue_script( $handle );
 			}
 		}
-	}
-
-	/**
-	 * Expand trailing `*` against registered handles.
-	 *
-	 * @param string[] $handles Handle patterns.
-	 * @param string   $type    style|script.
-	 * @return string[]
-	 */
-	protected function expand_handles( $handles, $type ) {
-		$wp  = 'style' === $type ? wp_styles() : wp_scripts();
-		$out = array();
-
-		foreach ( $handles as $handle ) {
-			if ( substr( $handle, -1 ) === '*' ) {
-				$prefix = substr( $handle, 0, -1 );
-				if ( empty( $wp->registered ) ) {
-					continue;
-				}
-				foreach ( array_keys( $wp->registered ) as $registered ) {
-					if ( strpos( $registered, $prefix ) === 0 ) {
-						$out[] = $registered;
-					}
-				}
-				continue;
-			}
-			$out[] = $handle;
-		}
-
-		return array_values( array_unique( $out ) );
 	}
 }

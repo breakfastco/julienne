@@ -10,7 +10,7 @@ Each file in `cuts/` is one plugin. The file returns an array so shortcodes, blo
 | --- | --- |
 | `contact-form-7.php` | CF7 CSS/JS, plus Blocksy/Astra companion sheets |
 | `wpforms.php` | WPForms CSS/JS, plus Blocksy `ct-wpforms-styles` |
-| `paid-memberships-pro.php` | `pmpro_frontend*` CSS (kept in the head on checkout and PMPro pages) |
+| `paid-memberships-pro.php` | PMPro frontend CSS (kept in the head on checkout and PMPro pages) |
 | `woocommerce.php` | WooCommerce CSS/JS, plus common theme companion sheets |
 | `easy-digital-downloads.php` | `edd-styles` / `edd-ajax`, plus Astra/OceanWP/Neve companions |
 | `elementor.php` | Blocksy/Sydney Elementor companion CSS (left alone when Elementor Pro is active) |
@@ -38,7 +38,7 @@ add_action( 'breakfast_julienne_register', function () {
 Useful keys:
 
 - `active` — bool or callback. Skip the cut when the plugin is absent.
-- `styles` / `scripts` — handles. A trailing `*` is a prefix match (`pmpro_frontend*`).
+- `styles` / `scripts` — exact enqueue handles.
 - `shortcodes` / `blocks` — early (queried post) and late (render) detection. A block value ending in `/` matches a namespace (`pmpro/`).
 - `filters` / `actions` — extra render hooks that mark the cut used.
 - `needles` / `image_classes` — content substrings and `<img>` classes.
