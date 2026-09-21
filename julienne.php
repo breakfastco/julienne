@@ -60,10 +60,3 @@ if ( ! class_exists( 'Breakfast_Julienne' ) ) {
 }
 
 add_action( 'plugins_loaded', array( breakfast_julienne(), 'boot' ), 20 );
-
-register_activation_hook(
-	__FILE__,
-	static function () {
-		deactivate_plugins( 'contact-form-7-fix-asset-loads/contact-form-7-fix-asset-loads.php', true );
-	}
-);
