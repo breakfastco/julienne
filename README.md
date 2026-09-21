@@ -12,6 +12,7 @@ Each file in `cuts/` is one plugin. The file returns an array so shortcodes, blo
 | `wpforms.php` | WPForms CSS/JS, plus Blocksy `ct-wpforms-styles` |
 | `paid-memberships-pro.php` | `pmpro_frontend*` CSS (kept in the head on checkout and PMPro pages) |
 | `woocommerce.php` | WooCommerce CSS/JS, plus common theme companion sheets |
+| `easy-digital-downloads.php` | `edd-styles` / `edd-ajax`, plus Astra/OceanWP/Neve companions |
 | `svg-support.php` | DOMPurify / svgs-inline unless `style-svg` (or force-inline) is in play |
 
 We take requests. If you want a cut for another plugin, [open an issue or a pull request](https://github.com/breakfastco/julienne) or send a note at [https://breakfastco.xyz/contact](https://breakfastco.xyz/contact).
