@@ -8,7 +8,7 @@ Each file in `cuts/` is one plugin. The file returns an array so shortcodes, blo
 
 | Cut | What it unloads unless needed |
 | --- | --- |
-| `contact-form-7.php` | CF7 CSS/JS, plus Blocksy `ct-cf-7-styles` |
+| `contact-form-7.php` | CF7 CSS/JS, plus Blocksy/Astra companion sheets |
 | `wpforms.php` | WPForms CSS/JS, plus Blocksy `ct-wpforms-styles` |
 | `paid-memberships-pro.php` | `pmpro_frontend*` CSS (kept in the head on checkout and PMPro pages) |
 | `woocommerce.php` | WooCommerce CSS/JS, plus common theme companion sheets |

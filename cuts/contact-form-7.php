@@ -1,10 +1,11 @@
 <?php
 /**
- * Cut: Contact Form 7 (+ Blocksy companion stylesheet).
+ * Cut: Contact Form 7 (+ theme companion stylesheets).
  *
- * CF7 enqueues CSS/JS globally. Blocksy also dumps `ct-cf-7-styles` whenever
- * the plugin is active. Restore only after a form actually renders — or keep
- * them in the head when the queried post already contains the shortcode/block.
+ * CF7 enqueues CSS/JS globally. Blocksy dumps `ct-cf-7-styles` whenever the
+ * plugin is active; Astra dumps `astra-contact-form-7` on the same hook CF7
+ * uses to load its own CSS. Restore only after a form actually renders — or
+ * keep them in the head when the queried post already contains the shortcode/block.
  *
  * @package Breakfast_Julienne
  */
@@ -21,6 +22,7 @@ return array(
 		'contact-form-7-rtl',
 		'jquery-ui-smoothness',
 		'ct-cf-7-styles',
+		'astra-contact-form-7',
 	),
 	'scripts'    => array(
 		'contact-form-7',
