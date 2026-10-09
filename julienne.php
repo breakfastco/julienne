@@ -7,7 +7,7 @@
  * Requires PHP: 7.4
  * Plugin URI: https://breakfastco.xyz
  * Author: Breakfast
- * Author URI: https://github.com/csalzano
+ * Author URI: https://breakfastco.xyz
  * License: GPL-2.0-or-later
  * GitHub Plugin URI: https://github.com/breakfastco/julienne
  * Primary Branch: main
