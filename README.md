@@ -56,4 +56,4 @@ add_filter( 'breakfast_julienne_cuts', function ( $cuts ) {
 } );
 ```
 
-There is no admin UI in v0.1.0. A screen that toggles cuts or maps handles would come later; the registration API is the product for now.
+There is no admin UI yet. A screen that toggles cuts or maps handles would come later; the registration API is the product for now.

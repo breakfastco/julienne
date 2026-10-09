@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Julienne
  * Description: Unload unused plugin CSS and JS unless the current request actually needs them.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Plugin URI: https://breakfastco.xyz
