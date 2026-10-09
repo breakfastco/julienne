@@ -27,8 +27,6 @@ return array(
 		'woocommerce-blocktheme',
 		'woocommerce-inline',
 		'wc-blocks-style',
-		'wc-blocks-vendors-style',
-		'wc-block-style',
 		'photoswipe-default-skin',
 		'ct-woocommerce-styles',
 		'ct-woocommerce-cart-checkout-blocks',
