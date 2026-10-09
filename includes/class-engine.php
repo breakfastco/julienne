@@ -22,6 +22,13 @@ class Breakfast_Julienne_Engine {
 	protected $plugin;
 
 	/**
+	 * Handles that were enqueued when we dequeued them, keyed by cut id then type.
+	 *
+	 * @var array
+	 */
+	protected $dequeued = array();
+
+	/**
 	 * @param Breakfast_Julienne_Plugin $plugin Plugin instance.
 	 */
 	public function __construct( $plugin ) {
@@ -76,13 +83,15 @@ class Breakfast_Julienne_Engine {
 			if ( $cut->is_early_needed() ) {
 				continue;
 			}
-			$this->dequeue_handles( $cut->styles(), 'style' );
-			$this->dequeue_handles( $cut->scripts(), 'script' );
+			$this->dequeued[ $cut->id() ] = array(
+				'style'  => $this->dequeue_handles( $cut->styles(), 'style' ),
+				'script' => $this->dequeue_handles( $cut->scripts(), 'script' ),
+			);
 		}
 	}
 
 	/**
-	 * If a late render happened, put the assets back before footer print.
+	 * If a late render happened, put back only what we took away before footer print.
 	 *
 	 * @return void
 	 */
@@ -91,10 +100,14 @@ class Breakfast_Julienne_Engine {
 			if ( $cut->is_early_needed() || ! $cut->was_used() ) {
 				continue;
 			}
-			if ( $cut->should_load_styles() ) {
-				$this->enqueue_handles( $cut->styles(), 'style' );
+			if ( empty( $this->dequeued[ $cut->id() ] ) ) {
+				continue;
 			}
-			$this->enqueue_handles( $cut->scripts(), 'script' );
+			$dequeued = $this->dequeued[ $cut->id() ];
+			if ( $cut->should_load_styles() ) {
+				$this->enqueue_handles( $dequeued['style'], 'style' );
+			}
+			$this->enqueue_handles( $dequeued['script'], 'script' );
 		}
 	}
 
@@ -170,16 +183,24 @@ class Breakfast_Julienne_Engine {
 	/**
 	 * @param string[] $handles Style or script handles.
 	 * @param string   $type    style|script.
-	 * @return void
+	 * @return string[] Handles that were enqueued before this call.
 	 */
 	protected function dequeue_handles( $handles, $type ) {
+		$dequeued = array();
 		foreach ( $handles as $handle ) {
 			if ( 'style' === $type ) {
+				if ( wp_style_is( $handle, 'enqueued' ) ) {
+					$dequeued[] = $handle;
+				}
 				wp_dequeue_style( $handle );
 			} else {
+				if ( wp_script_is( $handle, 'enqueued' ) ) {
+					$dequeued[] = $handle;
+				}
 				wp_dequeue_script( $handle );
 			}
 		}
+		return $dequeued;
 	}
 
 	/**
